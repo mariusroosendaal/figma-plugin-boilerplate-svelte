@@ -1,0 +1,14 @@
+{
+  "name": "Figma Plugin Boilerplate Svelte",
+  "id": "figma-plugin-boilerplate-svelte",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "index.html",
+  "capabilities": [],
+  "enableProposedApi": false,
+  "editorType": ["figma"],
+  "networkAccess": {
+    "allowedDomains": ["none"]
+  },
+  "documentAccess": "dynamic-page"
+}
