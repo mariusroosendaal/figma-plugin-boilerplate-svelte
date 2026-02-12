@@ -102,6 +102,18 @@ The included demo showcases these UI3 Kit components:
 - **Input** - Text input fields
 - **Label** - Form labels
 
+## Writing Documentation
+
+Use `README.template.md` as a starting point for your plugin's documentation. The template follows the standard structure used across all plugins in this collection:
+
+- Clear, specific description
+- Feature list with bold labels
+- Step-by-step usage instructions
+- Settings explanation (if applicable)
+- Standard development section
+
+See `AGENTS.md` in the repository root for detailed documentation guidelines and writing style conventions.
+
 ## Building Your Plugin
 
 ### Customization Checklist
@@ -110,8 +122,9 @@ Before building your own plugin, update these files:
 
 1. **`src/manifest.json`** - Change the `name` and `id` fields to match your plugin
 2. **`package.json`** - Update `name` and `description`
-3. **`src/PluginUI.svelte`** - Replace the demo UI with your own interface
-4. **`src/code.ts`** - Replace the demo logic with your plugin functionality
+3. **`README.md`** - Use `README.template.md` as a starting point for your plugin's documentation
+4. **`src/PluginUI.svelte`** - Replace the demo UI with your own interface
+5. **`src/code.ts`** - Replace the demo logic with your plugin functionality
 
 ### Modifying the Demo
 
