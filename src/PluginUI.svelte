@@ -22,7 +22,7 @@
     StatusBar,
     sendToPlugin,
     createMessageHandler,
-  } from "figma-plugin-utils";
+  } from "figma-plugin-utilities";
 
   let status = { message: "", type: "info" };
   let selectedTab = 0;
@@ -69,7 +69,7 @@
   }
 
   function showInfo() {
-    status = { message: "Boilerplate demo — figma-plugin-utils", type: "info" };
+    status = { message: "Boilerplate demo — figma-plugin-utilities", type: "info" };
   }
 </script>
 

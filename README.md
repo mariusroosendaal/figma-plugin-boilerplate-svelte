@@ -93,7 +93,7 @@ The custom Vite configuration handles Figma's unique requirements:
 
 ## Demo Components
 
-The included demo uses **figma-ui3-kit-svelte** (**Button**, **Dropdown**, **Tabs**, **Text**, **Input**, **Slider**, **IconButton**) and **figma-plugin-utils** (**PluginLayout**, **Header**, **FieldGroup**, **Footer**, **StatusBar**, **sendToPlugin**, **createMessageHandler**).
+The included demo uses **figma-ui3-kit-svelte** (**Button**, **Dropdown**, **Tabs**, **Text**, **Input**, **Slider**, **IconButton**) and **figma-plugin-utilities** (**PluginLayout**, **Header**, **FieldGroup**, **Footer**, **StatusBar**, **sendToPlugin**, **createMessageHandler**).
 
 ## Building Your Plugin
 

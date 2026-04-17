@@ -3,13 +3,13 @@
  * This file runs in the Figma plugin sandbox and has access to the Figma Plugin API
  */
 
-// Import helpers from figma-plugin-utils
+// Import helpers from figma-plugin-utilities
 import {
   sendToUI,
   showError,
   focusNodes,
   loadFont,
-} from "figma-plugin-utils/lib/figma-helpers";
+} from "figma-plugin-utilities/lib/figma-helpers";
 
 // Show the UI when the plugin is launched
 figma.showUI(__html__, {
