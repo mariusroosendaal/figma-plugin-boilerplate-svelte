@@ -93,26 +93,7 @@ The custom Vite configuration handles Figma's unique requirements:
 
 ## Demo Components
 
-The included demo showcases these UI3 Kit components:
-
-- **Button** - Primary action buttons
-- **Dropdown** - Dropdown selection menus
-- **Tabs** - Tabbed navigation
-- **Text** - Typography with variant styles
-- **Input** - Text input fields
-- **Label** - Form labels
-
-## Writing Documentation
-
-Use `README.template.md` as a starting point for your plugin's documentation. The template follows the standard structure used across all plugins in this collection:
-
-- Clear, specific description
-- Feature list with bold labels
-- Step-by-step usage instructions
-- Settings explanation (if applicable)
-- Standard development section
-
-See `AGENTS.md` in the repository root for detailed documentation guidelines and writing style conventions.
+The included demo uses **figma-ui3-kit-svelte** (**Button**, **Dropdown**, **Tabs**, **Text**, **Input**, **Slider**, **IconButton**) and **figma-plugin-utils** (**PluginLayout**, **Header**, **FieldGroup**, **Footer**, **StatusBar**, **sendToPlugin**, **createMessageHandler**).
 
 ## Building Your Plugin
 
@@ -122,15 +103,11 @@ Before building your own plugin, update these files:
 
 1. **`src/manifest.json`** - Change the `name` and `id` fields to match your plugin
 2. **`package.json`** - Update `name` and `description`
-3. **`README.md`** - Use `README.template.md` as a starting point for your plugin's documentation
-4. **`src/PluginUI.svelte`** - Replace the demo UI with your own interface
-5. **`src/code.ts`** - Replace the demo logic with your plugin functionality
 
 ### Modifying the Demo
 
 1. **UI Changes**: Edit `src/PluginUI.svelte`
 2. **Plugin Logic**: Modify `src/code.ts`
-3. **Styling**: Update the `<style>` section in the Svelte component
 
 ### CSS Variables & Styling
 
@@ -159,44 +136,6 @@ Import additional components from the UI3 Kit:
 ```javascript
 import { NewComponent } from 'figma-ui3-kit-svelte';
 ```
-
-### Communication Between UI and Plugin
-
-The UI communicates with the plugin code via messages:
-
-```javascript
-// In UI (PluginUI.svelte)
-function sendMessage(type, data = {}) {
-    parent.postMessage({ pluginMessage: { type, ...data } }, '*');
-}
-
-// In plugin code (code.ts)
-figma.ui.onmessage = async (msg) => {
-    if (msg.type === 'your-action') {
-        // Handle the action
-    }
-};
-```
-
-### Font Loading for Text Elements
-
-When creating text elements in Figma, you must load the font first:
-
-```javascript
-// Load font before creating text
-await figma.loadFontAsync({ family: "Inter", style: "Regular" });
-
-const text = figma.createText();
-text.characters = "Your text here";
-```
-
-## Building for Production
-
-```bash
-npm run build
-```
-
-This creates optimized files in the `dist/` directory ready for distribution.
 
 ## License
 
