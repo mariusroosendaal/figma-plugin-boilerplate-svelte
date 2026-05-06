@@ -69,7 +69,10 @@
   }
 
   function showInfo() {
-    status = { message: "Boilerplate demo — figma-plugin-utilities", type: "info" };
+    status = {
+      message: "Boilerplate demo",
+      type: "info",
+    };
   }
 </script>
 
@@ -81,15 +84,29 @@
   />
   <Header>
     <svelte:fragment slot="left">
-      <Tabs {tabs} bind:selectedTab />
+      <Tabs
+        id="plugin-tabs"
+        {tabs}
+        bind:selectedTab
+        panelIds={["tab-panel-shape", "tab-panel-text"]}
+      />
     </svelte:fragment>
     <svelte:fragment slot="right">
-      <IconButton iconName={IconMore} on:click={showInfo} />
+      <IconButton
+        iconName={IconMore}
+        ariaLabel="Plugin info"
+        on:click={showInfo}
+      />
     </svelte:fragment>
   </Header>
 
   <PluginLayout>
-    {#if selectedTab === 0}
+    <div
+      id="tab-panel-shape"
+      role="tabpanel"
+      aria-labelledby="plugin-tabs-tab-0"
+      hidden={selectedTab !== 0}
+    >
       <div class="section">
         <Text variant="body-medium" color="secondary">
           Choose a shape, then create it on the canvas
@@ -108,10 +125,17 @@
             max={5}
             step={1}
             variant="stepper"
+            ariaLabel="Number of shapes"
           />
         </FieldGroup>
       </div>
-    {:else}
+    </div>
+    <div
+      id="tab-panel-text"
+      role="tabpanel"
+      aria-labelledby="plugin-tabs-tab-1"
+      hidden={selectedTab !== 1}
+    >
       <div class="section">
         <Text variant="body-medium" color="secondary">
           Enter text, then add it to the canvas
@@ -120,7 +144,7 @@
           <Input bind:value={textInput} placeholder="Enter text..." />
         </FieldGroup>
       </div>
-    {/if}
+    </div>
   </PluginLayout>
 
   {#if selectedTab === 0}
