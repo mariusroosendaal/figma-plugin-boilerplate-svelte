@@ -149,8 +149,8 @@ export default defineConfig({
   ],
   build: {
     outDir: "dist",
-    emptyOutDir: false, // Don't clear dist/ (manifest.json gets copied here)
-    target: "es2017", // Figma's JS sandbox doesn't support ES2020+ (no ?. or ??)
+    emptyOutDir: true,
+    target: "es2017", // Conservative target for maximum Figma sandbox compatibility
     rollupOptions: {
       input: {
         ui: resolve(__dirname, "src/index.html"), // UI entry point

@@ -23,10 +23,9 @@
     "lint": "tsc --noEmit && eslint . --ext .ts,.js,.svelte && npx prettier --check \"src/**/*.{js,ts,svelte,html,css}\"",
     "prettier": "npx prettier --write \"src/**/*.{js,ts,svelte,html,css}\""
   },
-  "dependencies": {
-    "figma-plugin-utilities": "file:../_packages/figma-plugin-utilities"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "figma-plugin-utilities": "file:../_packages/figma-plugin-utilities",
     "@eslint/js": "^9.39.1",
     "@figma/plugin-typings": "^1.51.0",
     "@sveltejs/vite-plugin-svelte": "^3.0.2",

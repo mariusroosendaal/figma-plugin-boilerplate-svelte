@@ -3,6 +3,7 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 import svelte from "eslint-plugin-svelte";
 import svelteParser from "svelte-eslint-parser";
+import tsParser from "@typescript-eslint/parser";
 import { defineConfig } from "eslint/config";
 
 export default defineConfig([
@@ -19,7 +20,7 @@ export default defineConfig([
     languageOptions: {
       parser: svelteParser,
       parserOptions: {
-        parser: "espree",
+        parser: tsParser,
         ecmaVersion: "latest",
         sourceType: "module",
         extraFileExtensions: [".svelte"],
