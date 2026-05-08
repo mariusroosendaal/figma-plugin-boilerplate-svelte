@@ -44,7 +44,8 @@ figma.ui.onmessage = async (msg) => {
       figma.currentPage.selection = nodes;
       focusNodes(nodes);
       sendToUI("success", {
-        message: count === 1 ? "Rectangle created" : `${count} rectangles created`,
+        message:
+          count === 1 ? "Rectangle created" : `${count} rectangles created`,
       });
       break;
     }
