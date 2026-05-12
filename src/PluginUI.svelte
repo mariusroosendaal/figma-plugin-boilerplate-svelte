@@ -10,11 +10,9 @@
     Text,
     Input,
     Slider,
-  IconButton,
+    IconButton,
   } from "figma-ui3-kit-svelte";
-  import {
-    IconMore,
-  } from "figma-ui3-kit-svelte/icons";
+  import { IconMore } from "figma-ui3-kit-svelte/icons";
   import {
     PluginLayout,
     Header,
