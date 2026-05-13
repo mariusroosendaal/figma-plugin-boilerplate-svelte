@@ -11,6 +11,7 @@
     Input,
     Slider,
     IconButton,
+    Tooltip,
   } from "figma-ui3-kit-svelte";
   import { IconMore } from "figma-ui3-kit-svelte/icons";
   import {
@@ -25,6 +26,7 @@
 
   let status = { message: "", type: "info" };
   let selectedTab = 0;
+  let isLoading = false;
 
   const tabs = [
     { id: "shape", label: "Shape" },
@@ -43,23 +45,27 @@
   window.onmessage = createMessageHandler({
     success: (msg) => {
       status = { message: msg.message || "Success!", type: "success" };
+      isLoading = false;
     },
     error: (msg) => {
       status = { message: msg.message || "An error occurred", type: "error" };
+      isLoading = false;
     },
   });
 
   function createShape() {
+    if (isLoading) return;
+    isLoading = true;
     const shapeType = selectedShape?.value || "rectangle";
     sendToPlugin(
       shapeType === "circle" ? "create-circle" : "create-rectangle",
-      {
-        count: shapeCount,
-      },
+      { count: shapeCount },
     );
   }
 
   function createText() {
+    if (isLoading || !textInput.trim()) return;
+    isLoading = true;
     sendToPlugin("create-text", { text: textInput });
   }
 
@@ -112,6 +118,7 @@
         </Text>
         <FieldGroup label="Shape">
           <Dropdown
+            ariaLabel="Shape"
             placeholder="Select a shape"
             menuItems={shapeOptions}
             bind:value={selectedShape}
@@ -139,8 +146,12 @@
         <Text variant="body-medium" color="secondary">
           Enter text, then add it to the canvas
         </Text>
-        <FieldGroup label="Text content">
-          <Input bind:value={textInput} placeholder="Enter text..." />
+        <FieldGroup label="Text content" labelFor="text-content-input">
+          <Input
+            id="text-content-input"
+            bind:value={textInput}
+            placeholder="Enter text..."
+          />
         </FieldGroup>
       </div>
     </div>
@@ -148,11 +159,35 @@
 
   {#if selectedTab === 0}
     <Footer variant="right">
-      <Button variant="primary" on:click={createShape}>Create shape</Button>
+      <Tooltip
+        label="Creating shapes..."
+        disabled={!isLoading}
+        direction="TopRight"
+      >
+        <Button
+          variant="primary"
+          ariaDisabled={isLoading}
+          on:click={createShape}
+        >
+          {isLoading ? "Creating..." : "Create shape"}
+        </Button>
+      </Tooltip>
     </Footer>
   {:else}
     <Footer variant="right">
-      <Button variant="primary" on:click={createText}>Create text</Button>
+      <Tooltip
+        label={isLoading ? "Creating text..." : "Enter some text first"}
+        disabled={!isLoading && !!textInput.trim()}
+        direction="TopRight"
+      >
+        <Button
+          variant="primary"
+          ariaDisabled={isLoading || !textInput.trim()}
+          on:click={createText}
+        >
+          {isLoading ? "Creating..." : "Create text"}
+        </Button>
+      </Tooltip>
     </Footer>
   {/if}
 </div>
