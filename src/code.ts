@@ -12,10 +12,14 @@ figma.showUI(__html__, {
   themeColors: true,
 });
 
+// The UI offers 1–5, but a message can say anything: clamp to the same range
+// rather than trusting what arrives.
+const MAX_SHAPES = 5;
+
 function clampShapeCount(raw: unknown): number {
   const n = typeof raw === "number" ? raw : parseInt(String(raw), 10);
   if (Number.isNaN(n)) return 1;
-  return Math.min(20, Math.max(1, Math.floor(n)));
+  return Math.min(MAX_SHAPES, Math.max(1, Math.floor(n)));
 }
 
 figma.ui.onmessage = async (msg) => {
@@ -38,8 +42,7 @@ figma.ui.onmessage = async (msg) => {
         figma.currentPage.selection = nodes;
         focusNodes(nodes);
         sendToUI("success", {
-          message:
-            count === 1 ? "Rectangle created" : `${count} rectangles created`,
+          message: `${count === 1 ? "Rectangle" : `${count} rectangles`} created. Press Ctrl/Cmd+Z to undo.`,
         });
         break;
       }
@@ -61,7 +64,7 @@ figma.ui.onmessage = async (msg) => {
         figma.currentPage.selection = nodes;
         focusNodes(nodes);
         sendToUI("success", {
-          message: count === 1 ? "Circle created" : `${count} circles created`,
+          message: `${count === 1 ? "Circle" : `${count} circles`} created. Press Ctrl/Cmd+Z to undo.`,
         });
         break;
       }
@@ -83,7 +86,9 @@ figma.ui.onmessage = async (msg) => {
           figma.currentPage.appendChild(text);
           figma.currentPage.selection = [text];
           focusNodes([text]);
-          sendToUI("success", { message: "Text created" });
+          sendToUI("success", {
+            message: "Text created. Press Ctrl/Cmd+Z to undo.",
+          });
         } catch (error) {
           console.error("Error creating text:", error);
           showError("Error creating text element");

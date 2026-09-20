@@ -9,7 +9,7 @@
     Tabs,
     Text,
     Input,
-    Slider,
+    NumericInput,
     IconButton,
     Tooltip,
   } from "figma-ui3-kit-svelte";
@@ -28,10 +28,7 @@
   let selectedTab = 0;
   let isLoading = false;
 
-  const tabs = [
-    { id: "shape", label: "Shape" },
-    { id: "text", label: "Text" },
-  ];
+  const tabs = ["Shape", "Text"];
 
   let textInput = "Hello Figma!";
   const shapeOptions = [
@@ -39,7 +36,8 @@
     { label: "Circle", value: "circle" },
   ];
   let selectedShape = shapeOptions[0];
-  /** Number of shapes to create (1-5) */
+  /** code.ts clamps to the same range, since a plugin cannot trust its UI */
+  const MAX_SHAPES = 5;
   let shapeCount = 3;
 
   window.onmessage = createMessageHandler({
@@ -113,7 +111,7 @@
       hidden={selectedTab !== 0}
     >
       <div class="section">
-        <Text variant="body-medium" color="secondary">
+        <Text variant="body-medium" color="--figma-color-text-secondary">
           Choose a shape, then create it on the canvas
         </Text>
         <FieldGroup label="Shape">
@@ -124,14 +122,12 @@
             bind:value={selectedShape}
           />
         </FieldGroup>
-        <FieldGroup label="Number of shapes">
-          <Slider
+        <FieldGroup label="Number of shapes" labelFor="shape-count-input">
+          <NumericInput
             bind:value={shapeCount}
+            id="shape-count-input"
             min={1}
-            max={5}
-            step={1}
-            variant="stepper"
-            ariaLabel="Number of shapes"
+            max={MAX_SHAPES}
           />
         </FieldGroup>
       </div>
@@ -143,7 +139,7 @@
       hidden={selectedTab !== 1}
     >
       <div class="section">
-        <Text variant="body-medium" color="secondary">
+        <Text variant="body-medium" color="--figma-color-text-secondary">
           Enter text, then add it to the canvas
         </Text>
         <FieldGroup label="Text content" labelFor="text-content-input">
