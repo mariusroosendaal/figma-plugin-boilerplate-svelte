@@ -9,7 +9,7 @@
     Tabs,
     Text,
     Input,
-    NumericInput,
+    Slider,
     IconButton,
     Tooltip,
   } from "figma-ui3-kit-svelte";
@@ -122,12 +122,14 @@
             bind:value={selectedShape}
           />
         </FieldGroup>
-        <FieldGroup label="Number of shapes" labelFor="shape-count-input">
-          <NumericInput
+        <FieldGroup label="Number of shapes">
+          <Slider
             bind:value={shapeCount}
-            id="shape-count-input"
             min={1}
             max={MAX_SHAPES}
+            step={1}
+            variant="stepper"
+            ariaLabel="Number of shapes"
           />
         </FieldGroup>
       </div>
