@@ -4,14 +4,14 @@ A modern Figma plugin boilerplate built with Svelte and the Figma UI3 Kit compon
 
 ## Features
 
-- **Svelte Framework** - Modern, reactive UI framework
-- **UI3 Kit Integration** - Pre-configured custom Figma UI component library
-- **TypeScript Support** - Full type safety with configured tsconfig
-- **Vite Build System** - Fast builds with custom plugin inlining
-- **Hot Reload Development** - Watch mode for rapid iteration
-- **Message Passing Setup** - Pre-wired communication between UI and plugin code
-- **Working Demo** - Includes example shapes, text, tabs, and dropdowns
-- **ESLint & Prettier** - Code quality and formatting tools configured
+- **Svelte Framework** — Modern, reactive UI framework
+- **UI3 Kit Integration** — Pre-configured custom Figma UI component library
+- **TypeScript Support** — Full type safety with configured tsconfig
+- **Vite Build System** — Fast builds with custom plugin inlining
+- **Hot Reload Development** — Watch mode for rapid iteration
+- **Message Passing Setup** — Pre-wired communication between UI and plugin code
+- **Working Demo** — Includes example shapes, text, tabs, and dropdowns
+- **ESLint & Prettier** — Code quality and formatting tools configured
 
 ## Getting Started
 
@@ -101,20 +101,20 @@ The included demo uses **figma-ui3-kit-svelte** (**Button**, **Dropdown**, **Tab
 
 Before building your own plugin, update these files:
 
-1. **`src/manifest.json`** - Change the `name` and `id` fields to match your plugin
-2. **`package.json`** - Update `name` and `description`
+1. **`src/manifest.json`** — Change the `name` and `id` fields to match your plugin
+2. **`package.json`** — Update `name` and `description`
 
 ### Modifying the Demo
 
-1. **UI Changes**: Edit `src/PluginUI.svelte`
-2. **Plugin Logic**: Modify `src/code.ts`
+1. **UI Changes** — Edit `src/PluginUI.svelte`
+2. **Plugin Logic** — Modify `src/code.ts`
 
 ### CSS Variables & Styling
 
 The `src/styles/` directory contains CSS variable reference files:
 
-- **`global.css`** - UI3 Kit variables (colors, sizes, spacing, fonts)
-- **`figma-development-theme.css`** - Figma's official theme variables
+- **`global.css`** — UI3 Kit variables (colors, sizes, spacing, fonts)
+- **`figma-development-theme.css`** — Figma's official theme variables
 
 These files are for reference only (no need to import them). Use the variables in your custom styles:
 
