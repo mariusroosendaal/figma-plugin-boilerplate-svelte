@@ -1,9 +1,9 @@
 import {
   sendToUI,
-  showError,
   focusNodes,
   loadFont,
 } from "figma-plugin-utilities/lib/figma-helpers";
+import { plural, UNDO } from "figma-plugin-utilities/lib/format";
 
 // Show the UI when the plugin is launched
 figma.showUI(__html__, {
@@ -64,7 +64,7 @@ figma.ui.onmessage = async (msg) => {
         figma.currentPage.selection = nodes;
         focusNodes(nodes);
         sendToUI("success", {
-          message: `${count === 1 ? "Circle" : `${count} circles`} created. Press Ctrl/Cmd+Z to undo.`,
+          message: `Created ${plural(count, "circle")}. ${UNDO}`,
         });
         break;
       }
@@ -72,7 +72,7 @@ figma.ui.onmessage = async (msg) => {
       case "create-text": {
         const textContent = typeof msg.text === "string" ? msg.text.trim() : "";
         if (!textContent) {
-          sendToUI("error", { message: "Please enter some text first" });
+          sendToUI("error", { message: "Enter some text first." });
           break;
         }
         try {
@@ -87,12 +87,14 @@ figma.ui.onmessage = async (msg) => {
           figma.currentPage.selection = [text];
           focusNodes([text]);
           sendToUI("success", {
-            message: "Text created. Press Ctrl/Cmd+Z to undo.",
+            message: `Created the text. ${UNDO}`,
           });
         } catch (error) {
           console.error("Error creating text:", error);
-          showError("Error creating text element");
-          sendToUI("error", { message: "Failed to create text element" });
+          // The window is open, so the error shows there, not as a notification
+          sendToUI("error", {
+            message: "Couldn't create the text. Try again.",
+          });
         }
         break;
       }
@@ -103,6 +105,8 @@ figma.ui.onmessage = async (msg) => {
     }
   } catch (error) {
     console.error(error);
-    sendToUI("error", { message: "An unexpected error occurred" });
+    sendToUI("error", {
+      message: "Something went wrong. Try again, or reopen the plugin.",
+    });
   }
 };

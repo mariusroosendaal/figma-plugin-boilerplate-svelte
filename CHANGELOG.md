@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+### Changed
+- The demo's messages follow the copy guidelines: counts with `plural`, `UNDO` after a change, "Couldn't …" for a failure, and errors shown once, in the window
+
 ## [0.4.0] - 2026-09-21
 
 ### Added
