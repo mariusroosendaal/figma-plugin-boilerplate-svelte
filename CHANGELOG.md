@@ -2,7 +2,10 @@
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-10-07
+
 ### Changed
+- Uses **figma-ui3-kit-svelte** 0.7.0 and **figma-plugin-utilities** 0.5.1
 - The demo's messages follow the copy guidelines: counts with `plural`, `UNDO` after a change, "Couldn't …" for a failure, and errors shown once, in the window
 
 ## [0.4.0] - 2026-09-21

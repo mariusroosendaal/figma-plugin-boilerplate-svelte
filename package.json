@@ -1,6 +1,6 @@
 {
   "name": "figma-plugin-boilerplate-svelte",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "A modern Figma plugin boilerplate built with Svelte and a UI3 Kit",
   "type": "module",
   "author": "Marius Roosendaal",
