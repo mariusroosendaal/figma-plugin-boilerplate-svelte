@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- The rectangle demo's message reads like the circle's, with `plural` and `UNDO`
+
 ## [0.5.0] - 2026-10-07
 
 ### Changed
@@ -19,7 +23,7 @@
 - Tabs are declared as plain strings; the `id` each carried was never read
 
 ### Fixed
-- `global.css` — `body` sets `color: var(--figma-color-text)`. Nothing declared a baseline text color, so an element that set none of its own inherited the UA default black. **StatusBar**'s default `info` type was the visible case: black message text on the dark theme's grey bar
+- `global.css` — `body` sets `color: var(--figma-color-text)`. Nothing declared a baseline text color, so an element that set none of its own inherited the UA default black. **StatusBar**'s default `info` type was the visible case: black message text on the dark theme's gray bar
 - `Text` was given `color="secondary"`, which is not a value it takes — it renders the string as a CSS color, so the helper text under each tab came out at full strength instead of secondary. It takes a token name: `color="--figma-color-text-secondary"`
 
 ## [0.3.1] - 2026-05-13

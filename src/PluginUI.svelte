@@ -30,7 +30,7 @@
 
   const tabs = ["Shape", "Text"];
 
-  let textInput = "Hello Figma!";
+  let textInput = "Hello Figma";
   const shapeOptions = [
     { label: "Rectangle", value: "rectangle" },
     { label: "Circle", value: "circle" },
@@ -42,7 +42,7 @@
 
   window.onmessage = createMessageHandler({
     success: (msg) => {
-      status = { message: msg.message || "Success!", type: "success" };
+      status = { message: msg.message || "Done.", type: "success" };
       isLoading = false;
     },
     error: (msg) => {
