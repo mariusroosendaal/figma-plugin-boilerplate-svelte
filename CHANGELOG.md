@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+- `vite.config.ts` is the shared config from `figma-plugin-utilities/vite`, and `build` and `dev` build each thread on its own, so `code.ts` and the UI can import the same module
+
 ### Fixed
 
 - The rectangle demo's message reads like the circle's, with `plural` and `UNDO`
